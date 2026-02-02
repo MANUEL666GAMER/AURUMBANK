@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurum Bank - Tarjetas de Crédito Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <span class="logo-text">AURUM</span>
+                    <span class="logo-subtitle">BANK</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#tarjetas">Tarjetas</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Tres estilos.</span>
+                    <span class="title-line">Un legado.</span>
+                </h1>
+                <p class="hero-subtitle">No es una tarjeta. Es la etapa que estás viviendo.</p>
+                <div class="hero-cta">
+                    <a href="#tarjetas" class="btn btn-primary">Descubre tu tarjeta</a>
+                    <a href="#beneficios" class="btn btn-secondary">Ver beneficios</a>
+                </div>
+            </div>
+            <div class="hero-cards">
+                <div class="hero-card hero-card-1"></div>
+                <div class="hero-card hero-card-2"></div>
+                <div class="hero-card hero-card-3"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Desliza</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Aurum Bank</h2>
+                <p class="about-text">Fundado en la tradición de la excelencia financiera, Aurum Bank representa más que servicios bancarios. Somos arquitectos de legados, guardianes de aspiraciones y compañeros en cada etapa de tu viaje financiero.</p>
+                <p class="about-text">Nuestras tarjetas de crédito premium están diseñadas para reflejar tu momento de vida, combinando beneficios excepcionales con un diseño que cuenta tu historia.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Años de experiencia</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Clientes satisfechos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Tasa de aprobación</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section" id="tarjetas">
+        <div class="container">
+            <h2 class="section-title centered">Línea de Tarjetas Aurum</h2>
+            <p class="section-subtitle centered">Tu escape perfecto bajo el sol y la plata</p>
+
+            <div class="cards-grid">
+                <!-- VITA Card -->
+                <div class="card-item" data-card="vita">
+                    <div class="card-visual">
+                        <div class="card-image vita-card">
+                            <div class="card-chip"></div>
+                            <div class="card-contactless"></div>
+                            <div class="card-brand">AURUM</div>
+                            <div class="card-tier">VITA</div>
+                            <div class="card-pattern"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-name">Aurum Vita</h3>
+                        <p class="card-tagline">El inicio de tu legado</p>
+                        <p class="card-description">Diseñada para jóvenes profesionales que están construyendo su futuro financiero con responsabilidad y estilo.</p>
+                        
+                        <div class="card-requirements">
+                            <h4>Requisitos</h4>
+                            <ul>
+                                <li>Ingreso mínimo comprobable de $15,000 MXN mensuales</li>
+                                <li>Identificación oficial vigente</li>
+                                <li>Comprobante de domicilio</li>
+                            </ul>
+                        </div>
+
+                        <div class="card-benefits">
+                            <h4>Beneficios principales</h4>
+                            <ul>
+                                <li>2% cashback en todas tus compras</li>
+                                <li>Sin anualidad el primer año</li>
+                                <li>Acceso a salas VIP en aeropuertos nacionales</li>
+                                <li>Seguro de compra protegida</li>
+                                <li>App móvil con control total</li>
+                            </ul>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="applyCard('vita')">Solicitar ahora</button>
+                    </div>
+                </div>
+
+                <!-- FIDES Card -->
+                <div class="card-item featured" data-card="fides">
+                    <div class="featured-badge">Más popular</div>
+                    <div class="card-visual">
+                        <div class="card-image fides-card">
+                            <div class="card-chip"></div>
+                            <div class="card-contactless"></div>
+                            <div class="card-brand">AURUM</div>
+                            <div class="card-tier">FIDES</div>
+                            <div class="card-pattern"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-name">Aurum Fides</h3>
+                        <p class="card-tagline">Confianza consolidada</p>
+                        <p class="card-description">Para profesionales establecidos que valoran la estabilidad y buscan beneficios premium que se adapten a su estilo de vida dinámico.</p>
+                        
+                        <div class="card-requirements">
+                            <h4>Requisitos</h4>
+                            <ul>
+                                <li>Ingreso mínimo comprobable de $25,000 MXN mensuales</li>
+                                <li>Historial crediticio sin atrasos recientes</li>
+                                <li>Identificación oficial vigente</li>
+                                <li>Comprobante de domicilio e ingresos</li>
+                            </ul>
+                        </div>
+
+                        <div class="card-benefits">
+                            <h4>Beneficios principales</h4>
+                            <ul>
+                                <li>4% cashback en viajes y restaurantes</li>
+                                <li>Acceso a salas VIP internacionales ilimitado</li>
+                                <li>Concierge 24/7</li>
+                                <li>Seguro de viaje internacional</li>
+                                <li>Programa de puntos Premium con conversión flexible</li>
+                                <li>Meses sin intereses en compras selectas</li>
+                            </ul>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="applyCard('fides')">Solicitar ahora</button>
+                    </div>
+                </div>
+
+                <!-- LEGATUM Card -->
+                <div class="card-item" data-card="legatum">
+                    <div class="card-visual">
+                        <div class="card-image legatum-card">
+                            <div class="card-chip"></div>
+                            <div class="card-contactless"></div>
+                            <div class="card-brand">AURUM</div>
+                            <div class="card-tier">LEGATUM</div>
+                            <div class="card-pattern"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-name">Aurum Legatum</h3>
+                        <p class="card-tagline">La excelencia hecha tradición</p>
+                        <p class="card-description">Exclusivamente para líderes que entienden que un legado se construye con decisiones acertadas y experiencias extraordinarias.</p>
+                        
+                        <div class="card-requirements">
+                            <h4>Requisitos</h4>
+                            <ul>
+                                <li>Ingreso mensual mínimo de $25,000 MXN</li>
+                                <li>Buen historial crediticio sin atrasos significativos</li>
+                                <li>Estabilidad laboral (mínimo 1 año en el puesto)</li>
+                                <li>Identificación oficial y comprobantes vigentes</li>
+                            </ul>
+                        </div>
+
+                        <div class="card-benefits">
+                            <h4>Beneficios principales</h4>
+                            <ul>
+                                <li>6% cashback en categorías premium</li>
+                                <li>Priority Pass ilimitado para ti y acompañante</li>
+                                <li>Concierge personal exclusivo</li>
+                                <li>Acceso a eventos privados y experiencias únicas</li>
+                                <li>Seguros premium (viaje, compra, renta de autos)</li>
+                                <li>Línea de crédito preferencial</li>
+                                <li>Asesoría financiera personalizada</li>
+                            </ul>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="applyCard('legatum')">Solicitar ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title centered">Compara nuestras tarjetas</h2>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Beneficio</th>
+                            <th>Vita</th>
+                            <th>Fides</th>
+                            <th>Legatum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cashback</td>
+                            <td>2%</td>
+                            <td>4%</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <td>Salas VIP</td>
+                            <td>Nacionales</td>
+                            <td>Internacionales</td>
+                            <td>Priority Pass ilimitado</td>
+                        </tr>
+                        <tr>
+                            <td>Concierge</td>
+                            <td>—</td>
+                            <td>24/7</td>
+                            <td>Personal exclusivo</td>
+                        </tr>
+                        <tr>
+                            <td>Seguro de viaje</td>
+                            <td>Nacional</td>
+                            <td>Internacional</td>
+                            <td>Premium global</td>
+                        </tr>
+                        <tr>
+                            <td>Ingreso mínimo</td>
+                            <td>$15,000 MXN</td>
+                            <td>$25,000 MXN</td>
+                            <td>$25,000 MXN</td>
+                        </tr>
+                        <tr>
+                            <td>Anualidad</td>
+                            <td>Gratis 1er año</td>
+                            <td>$2,500 MXN</td>
+                            <td>$4,500 MXN</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="beneficios">
+        <div class="container">
+            <h2 class="section-title centered">¿Por qué elegir Aurum Bank?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Excelencia financiera</h3>
+                    <p>25 años de experiencia respaldando tus decisiones más importantes</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Seguridad avanzada</h3>
+                    <p>Tecnología de encriptación de última generación y monitoreo 24/7</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Aprobación rápida</h3>
+                    <p>Respuesta en menos de 48 horas y activación inmediata</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌎</div>
+                    <h3>Cobertura global</h3>
+                    <p>Acepta en más de 200 países con las mejores tasas de cambio</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>App inteligente</h3>
+                    <p>Control total desde tu smartphone con notificaciones en tiempo real</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💎</div>
+                    <h3>Programa de lealtad</h3>
+                    <p>Puntos que nunca expiran y se convierten en experiencias únicas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Comienza tu legado hoy</h2>
+                <p class="cta-text">Solicita tu tarjeta Aurum y descubre un mundo de beneficios diseñados para ti</p>
+                <a href="#tarjetas" class="btn btn-primary btn-large">Solicitar mi tarjeta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>¿Necesitas ayuda?</h2>
+                    <p>Nuestro equipo está disponible para resolver todas tus dudas</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-method-icon">📞</div>
+                            <div>
+                                <div class="contact-method-label">Teléfono</div>
+                                <div class="contact-method-value">01 800 AURUM-00</div>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">✉️</div>
+                            <div>
+                                <div class="contact-method-label">Email</div>
+                                <div class="contact-method-value">contacto@aurumbank.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">💬</div>
+                            <div>
+                                <div class="contact-method-label">Chat</div>
+                                <div class="contact-method-value">Disponible 24/7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Tarjeta de interés</option>
+                                <option value="vita">Aurum Vita</option>
+                                <option value="fides">Aurum Fides</option>
+                                <option value="legatum">Aurum Legatum</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Mensaje (opcional)" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <span class="logo-text">AURUM</span>
+                        <span class="logo-subtitle">BANK</span>
+                    </div>
+                    <p>Construyendo legados desde 1999</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Tarjetas</h4>
+                    <ul>
+                        <li><a href="#tarjetas">Aurum Vita</a></li>
+                        <li><a href="#tarjetas">Aurum Fides</a></li>
+                        <li><a href="#tarjetas">Aurum Legatum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="LinkedIn">IN</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aurum Bank. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
