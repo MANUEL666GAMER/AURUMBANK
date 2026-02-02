@@ -1,502 +1,167 @@
 // ==========================================
-// NAVIGATION FUNCTIONALITY
+// NAVIGATION
 // ==========================================
 
-class Navigation {
-  constructor() {
-    this.navbar = document.getElementById('navbar');
-    this.navToggle = document.getElementById('navToggle');
-    this.navMenu = document.getElementById('navMenu');
-    this.navLinks = document.querySelectorAll('.nav-menu a');
-    
-    this.init();
-  }
-  
-  init() {
-    // Mobile menu toggle
-    this.navToggle?.addEventListener('click', () => this.toggleMobileMenu());
-    
-    // Close mobile menu when clicking a link
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', () => this.closeMobileMenu());
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navbar = document.getElementById('navbar');
+
+// Toggle mobile menu
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
     });
-    
-    // Sticky navigation on scroll
-    window.addEventListener('scroll', () => this.handleScroll());
-    
-    // Smooth scroll for anchor links
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', (e) => this.smoothScroll(e));
-    });
-  }
-  
-  toggleMobileMenu() {
-    this.navMenu?.classList.toggle('active');
-    this.animateToggleIcon();
-  }
-  
-  closeMobileMenu() {
-    this.navMenu?.classList.remove('active');
-  }
-  
-  animateToggleIcon() {
-    const spans = this.navToggle?.querySelectorAll('span');
-    if (!spans) return;
-    
-    if (this.navMenu?.classList.contains('active')) {
-      spans[0].style.transform = 'rotate(45deg) translateY(10px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
-    } else {
-      spans[0].style.transform = 'none';
-      spans[1].style.opacity = '1';
-      spans[2].style.transform = 'none';
-    }
-  }
-  
-  handleScroll() {
-    if (window.scrollY > 100) {
-      this.navbar?.classList.add('scrolled');
-    } else {
-      this.navbar?.classList.remove('scrolled');
-    }
-  }
-  
-  smoothScroll(e) {
-    const href = e.currentTarget.getAttribute('href');
-    if (href?.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        const offsetTop = target.offsetTop - 80;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    }
-  }
 }
 
+// Close mobile menu when clicking on a link
+const navLinks = document.querySelectorAll('.nav-menu a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+    });
+});
+
+// Navbar scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        navbar.style.padding = '0.5rem 0';
+        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+    } else {
+        navbar.style.padding = '1rem 0';
+        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+    }
+    
+    lastScroll = currentScroll;
+});
+
 // ==========================================
-// SCROLL ANIMATIONS
+// SMOOTH SCROLLING
 // ==========================================
 
-class ScrollAnimations {
-  constructor() {
-    this.observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-    
-    this.init();
-  }
-  
-  init() {
-    this.observeElements();
-  }
-  
-  observeElements() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          // Optional: unobserve after animation
-          // observer.unobserve(entry.target);
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const navbarHeight = navbar.offsetHeight;
+            const targetPosition = target.offsetTop - navbarHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
-      });
-    }, this.observerOptions);
-    
-    // Elements to observe
-    const elements = document.querySelectorAll(`
-      .about-content,
-      .about-stats,
-      .card-item,
-      .benefit-card,
-      .comparison-table,
-      .cta-content,
-      .contact-grid
-    `);
-    
-    elements.forEach(el => {
-      observer.observe(el);
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
-  }
-}
-
-// Add CSS for animation
-const style = document.createElement('style');
-style.textContent = `
-  .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-`;
-document.head.appendChild(style);
+});
 
 // ==========================================
-// CARD APPLICATION FUNCTIONALITY
+// CARD APPLICATION
 // ==========================================
 
 function applyCard(cardType) {
-  const cardNames = {
-    vita: 'Aurum Vita',
-    fides: 'Aurum Fides',
-    legatum: 'Aurum Legatum'
-  };
-  
-  const cardName = cardNames[cardType] || 'Aurum';
-  
-  // Show confirmation message
-  showNotification(
-    `¡Genial! Estás a punto de solicitar la tarjeta ${cardName}. Un asesor se pondrá en contacto contigo pronto.`,
-    'success'
-  );
-  
-  // Scroll to contact form
-  setTimeout(() => {
+    // Scroll to contact form
     const contactSection = document.getElementById('contacto');
-    if (contactSection) {
-      const offsetTop = contactSection.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
+    const navbarHeight = navbar.offsetHeight;
+    const targetPosition = contactSection.offsetTop - navbarHeight;
+    
+    window.scrollTo({
+        top: targetPosition,
         behavior: 'smooth'
-      });
-      
-      // Pre-select the card in the form
-      const selectElement = document.querySelector('.contact-form select');
-      if (selectElement) {
-        selectElement.value = cardType;
-        selectElement.focus();
-      }
-    }
-  }, 1000);
-}
-
-// ==========================================
-// FORM HANDLING
-// ==========================================
-
-class FormHandler {
-  constructor() {
-    this.contactForm = document.getElementById('contactForm');
-    this.init();
-  }
-  
-  init() {
-    this.contactForm?.addEventListener('submit', (e) => this.handleSubmit(e));
-  }
-  
-  async handleSubmit(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    
-    // Show loading state
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn?.textContent;
-    if (submitBtn) {
-      submitBtn.textContent = 'Enviando...';
-      submitBtn.disabled = true;
-    }
-    
-    // Simulate API call
-    await this.simulateFormSubmission(data);
-    
-    // Reset form
-    e.target.reset();
-    
-    // Restore button
-    if (submitBtn && originalText) {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-    
-    // Show success message
-    showNotification(
-      '¡Gracias por tu interés! Nos pondremos en contacto contigo en las próximas 24 horas.',
-      'success'
-    );
-  }
-  
-  simulateFormSubmission(data) {
-    return new Promise((resolve) => {
-      console.log('Form data:', data);
-      setTimeout(resolve, 1500);
     });
-  }
+    
+    // Pre-select the card in the form
+    setTimeout(() => {
+        const select = document.querySelector('.contact-form select');
+        if (select) {
+            select.value = cardType;
+            select.style.borderColor = '#D4AF37';
+            select.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.1)';
+            
+            setTimeout(() => {
+                select.style.borderColor = '';
+                select.style.boxShadow = '';
+            }, 2000);
+        }
+    }, 1000);
+    
+    console.log(`Applying for ${cardType} card`);
 }
 
 // ==========================================
-// NOTIFICATION SYSTEM
+// CONTACT FORM
 // ==========================================
 
-function showNotification(message, type = 'info') {
-  // Remove existing notification if any
-  const existing = document.querySelector('.notification');
-  if (existing) {
-    existing.remove();
-  }
-  
-  // Create notification element
-  const notification = document.createElement('div');
-  notification.className = `notification notification-${type}`;
-  notification.textContent = message;
-  
-  // Add styles
-  Object.assign(notification.style, {
-    position: 'fixed',
-    top: '100px',
-    right: '20px',
-    backgroundColor: type === 'success' ? '#D4AF37' : '#2C3E6B',
-    color: type === 'success' ? '#1A1A2E' : '#FFFFFF',
-    padding: '1rem 1.5rem',
-    borderRadius: '8px',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
-    zIndex: '10000',
-    maxWidth: '400px',
-    fontFamily: "'Lato', sans-serif",
-    fontSize: '0.9375rem',
-    fontWeight: '500',
-    animation: 'slideInRight 0.3s ease-out',
-    cursor: 'pointer'
-  });
-  
-  // Add animation keyframes
-  if (!document.querySelector('#notification-styles')) {
-    const styleSheet = document.createElement('style');
-    styleSheet.id = 'notification-styles';
-    styleSheet.textContent = `
-      @keyframes slideInRight {
-        from {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-      @keyframes slideOutRight {
-        from {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateX(400px);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(styleSheet);
-  }
-  
-  // Append to body
-  document.body.appendChild(notification);
-  
-  // Auto remove after 5 seconds
-  const removeNotification = () => {
-    notification.style.animation = 'slideOutRight 0.3s ease-out';
-    setTimeout(() => notification.remove(), 300);
-  };
-  
-  notification.addEventListener('click', removeNotification);
-  setTimeout(removeNotification, 5000);
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        console.log('Form submitted:', data);
+        
+        // Show success message (you can customize this)
+        alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
+        
+        // Reset form
+        contactForm.reset();
+    });
 }
+
+// ==========================================
+// INTERSECTION OBSERVER FOR ANIMATIONS
+// ==========================================
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements for fade-in animations
+document.querySelectorAll('.card-item, .benefit-card, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+});
 
 // ==========================================
 // CARD HOVER EFFECTS
 // ==========================================
 
-class CardEffects {
-  constructor() {
-    this.cards = document.querySelectorAll('.card-item');
-    this.init();
-  }
-  
-  init() {
-    this.cards.forEach(card => {
-      card.addEventListener('mouseenter', () => this.handleMouseEnter(card));
-      card.addEventListener('mouseleave', () => this.handleMouseLeave(card));
-      card.addEventListener('mousemove', (e) => this.handleMouseMove(e, card));
+document.querySelectorAll('.card-item').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
     });
-  }
-  
-  handleMouseEnter(card) {
-    const cardImage = card.querySelector('.card-image');
-    if (cardImage) {
-      cardImage.style.transition = 'transform 0.1s ease-out';
-    }
-  }
-  
-  handleMouseLeave(card) {
-    const cardImage = card.querySelector('.card-image');
-    if (cardImage) {
-      cardImage.style.transform = '';
-      cardImage.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-    }
-  }
-  
-  handleMouseMove(e, card) {
-    const cardImage = card.querySelector('.card-image');
-    if (!cardImage) return;
     
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    
-    cardImage.style.transform = `
-      perspective(1000px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      scale3d(1.05, 1.05, 1.05)
-    `;
-  }
-}
-
-// ==========================================
-// COUNTER ANIMATION
-// ==========================================
-
-class CounterAnimation {
-  constructor() {
-    this.counters = document.querySelectorAll('.stat-number');
-    this.init();
-  }
-  
-  init() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    this.counters.forEach(counter => observer.observe(counter));
-  }
-  
-  animateCounter(element) {
-    const target = element.textContent;
-    const isPercentage = target.includes('%');
-    const isPlus = target.includes('+');
-    const number = parseInt(target.replace(/[^0-9]/g, ''));
-    
-    if (isNaN(number)) return;
-    
-    const duration = 2000;
-    const steps = 60;
-    const stepValue = number / steps;
-    const stepDuration = duration / steps;
-    
-    let current = 0;
-    const timer = setInterval(() => {
-      current += stepValue;
-      if (current >= number) {
-        current = number;
-        clearInterval(timer);
-      }
-      
-      let display = Math.floor(current);
-      if (isPercentage) display += '%';
-      if (isPlus) display += '+';
-      if (target.includes('K')) display += 'K';
-      
-      element.textContent = display;
-    }, stepDuration);
-  }
-}
-
-// ==========================================
-// PARALLAX EFFECT
-// ==========================================
-
-class ParallaxEffect {
-  constructor() {
-    this.elements = document.querySelectorAll('.hero-background');
-    this.init();
-  }
-  
-  init() {
-    window.addEventListener('scroll', () => this.handleScroll());
-  }
-  
-  handleScroll() {
-    const scrolled = window.pageYOffset;
-    this.elements.forEach(element => {
-      const speed = 0.5;
-      element.style.transform = `translateY(${scrolled * speed}px)`;
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
     });
-  }
-}
-
-// ==========================================
-// INITIALIZE ALL MODULES
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all modules
-  new Navigation();
-  new ScrollAnimations();
-  new FormHandler();
-  new CardEffects();
-  new CounterAnimation();
-  new ParallaxEffect();
-  
-  // Add smooth reveal on page load
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 0.5s ease-in';
-    document.body.style.opacity = '1';
-  }, 100);
-  
-  console.log('🏦 Aurum Bank website initialized successfully');
 });
 
 // ==========================================
-// UTILITY FUNCTIONS
+// INITIALIZE ON LOAD
 // ==========================================
 
-// Debounce function for performance optimization
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Format currency
-function formatCurrency(amount, currency = 'MXN') {
-  return new Intl.NumberFormat('es-MX', {
-    style: 'currency',
-    currency: currency
-  }).format(amount);
-}
-
-// Validate email
-function isValidEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-// Validate phone
-function isValidPhone(phone) {
-  const re = /^[\d\s\-\+\(\)]+$/;
-  return re.test(phone) && phone.replace(/\D/g, '').length >= 10;
-}
+window.addEventListener('load', () => {
+    // Add loaded class to body for any CSS transitions
+    document.body.classList.add('loaded');
+    
+    console.log('Aurum Bank website loaded successfully');
+});

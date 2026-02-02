@@ -1,228 +1,98 @@
-# Aurum Bank - Landing Page
+# Aurum Bank - Sitio Web de Tarjetas de Crédito
 
-## 📋 Descripción
+## Cambios Realizados
 
-Landing page profesional y elegante para Aurum Bank, diseñada para promocionar tres líneas de tarjetas de crédito premium dirigidas a personas de 35 a 40 años:
+He corregido el HTML y CSS para que las imágenes de las tarjetas se muestren correctamente:
 
-- **Aurum Vita** - El inicio de tu legado
-- **Aurum Fides** - Confianza consolidada  
-- **Aurum Legatum** - La excelencia hecha tradición
+### Principales Correcciones:
 
-## 🎨 Características de Diseño
+1. **Hero Section (Sección Principal)**
+   - Corregí la estructura HTML para que cada tarjeta tenga su propia imagen
+   - Las tres tarjetas ahora se muestran correctamente con efecto de flotación
+   - Las imágenes se integran perfectamente con los estilos de sombra y animación
 
-### Paleta de Colores
-- **Dorado** (#D4AF37): Color principal que representa lujo y prestigio
-- **Oscuro** (#1A1A2E): Base elegante y sofisticada
-- **Burgundy** (#8B2C3F): Acento para la tarjeta Fides
-- **Navy** (#2C3E6B): Acento para la tarjeta Legatum
-- **Charcoal** (#2A2A2A): Para la tarjeta Vita
+2. **Sección de Tarjetas**
+   - Reemplacé las tarjetas CSS por imágenes reales
+   - Ahora usa `<img>` tags para mostrar las tarjetas
+   - Mantiene todos los efectos hover y transiciones elegantes
 
-### Tipografía
-- **Libre Baskerville**: Fuente serif para títulos y elementos destacados
-- **Lato**: Fuente sans-serif para cuerpo de texto y contenido general
+3. **CSS Mejorado**
+   - Nuevos estilos para `.hero-card-image` que se ajustan perfectamente
+   - Estilos para `.card-image-real` con efectos 3D al hover
+   - Responsive design mejorado para dispositivos móviles
 
-### Efectos Visuales
-- Animaciones suaves de entrada y desplazamiento
-- Efectos parallax en el hero
-- Hover effects 3D en las tarjetas
-- Transiciones fluidas entre secciones
-- Contadores animados para estadísticas
+## Estructura de Archivos
 
-## 📁 Estructura del Proyecto
+Tu proyecto debe tener la siguiente estructura:
 
 ```
 aurum-bank/
-├── index.html          # Estructura HTML principal
-├── css/
-│   └── styles.css      # Estilos CSS completos
-├── js/
-│   └── main.js         # Lógica JavaScript
-└── README.md           # Esta documentación
+├── index.html
+├── styles.css
+├── main.js
+└── img/
+    └── TARJETAS/
+        ├── legatum-tarj.png
+        ├── fides-tarj.png
+        └── vita-tarj.png
 ```
 
-## 🔧 Arquitectura Técnica
+## Cómo Usar las Imágenes
 
-### HTML (index.html)
-Estructura semántica organizada en secciones:
-- **Navigation**: Barra de navegación fija con logo
-- **Hero**: Sección principal con llamado a la acción
-- **About**: Información sobre Aurum Bank
-- **Cards**: Presentación de las tres tarjetas
-- **Comparison**: Tabla comparativa de beneficios
-- **Benefits**: Razones para elegir Aurum Bank
-- **CTA**: Llamado a la acción principal
-- **Contact**: Formulario de contacto
-- **Footer**: Enlaces y información adicional
+1. Crea una carpeta llamada `img` en la raíz de tu proyecto
+2. Dentro de `img`, crea una carpeta llamada `TARJETAS`
+3. Coloca tus tres imágenes de tarjetas con estos nombres:
+   - `legatum-tarj.png` (Tarjeta negra/oscura)
+   - `fides-tarj.png` (Tarjeta burgundy/roja)
+   - `vita-tarj.png` (Tarjeta azul/navy)
 
-### CSS (css/styles.css)
-Estilos organizados por módulos:
-- Variables CSS para consistencia
-- Sistema de diseño escalable
-- Responsive design (mobile-first)
-- Animaciones y transiciones
-- Grid y Flexbox layouts
+## Recomendaciones para las Imágenes
 
-### JavaScript (js/main.js)
-Módulos separados por funcionalidad:
-- **Navigation**: Menú móvil y scroll behavior
-- **ScrollAnimations**: Animaciones al hacer scroll
-- **FormHandler**: Validación y envío de formularios
-- **CardEffects**: Efectos 3D en tarjetas
-- **CounterAnimation**: Animación de números
-- **ParallaxEffect**: Efecto parallax
+- **Tamaño recomendado**: 800x500 píxeles (proporción 16:10)
+- **Formato**: PNG con transparencia o JPG
+- **Resolución**: Al menos 72 DPI para web
+- **Peso**: Optimiza las imágenes para web (máximo 200KB por imagen)
 
-## 📱 Responsividad
+## Características del Diseño
 
-El diseño es completamente responsive con breakpoints en:
-- **Desktop**: > 1024px
-- **Tablet**: 768px - 1024px
-- **Mobile**: < 768px
-- **Small Mobile**: < 480px
+✅ Tres secciones hero con animaciones flotantes
+✅ Tarjetas de crédito con efecto 3D al hover
+✅ Diseño completamente responsive
+✅ Navegación fija con efecto scroll
+✅ Animaciones suaves con CSS
+✅ Formulario de contacto funcional
+✅ Tabla de comparación de tarjetas
 
-## 🎯 Requisitos de las Tarjetas
+## Navegadores Compatibles
 
-### Aurum Vita
-- Ingreso mínimo: $15,000 MXN mensuales
-- Identificación oficial vigente
-- Comprobante de domicilio
+- Chrome (última versión)
+- Firefox (última versión)
+- Safari (última versión)
+- Edge (última versión)
 
-### Aurum Fides
-- Ingreso mínimo: $25,000 MXN mensuales
-- Historial crediticio sin atrasos recientes
-- Identificación oficial vigente
-- Comprobante de domicilio e ingresos
+## Instalación
 
-### Aurum Legatum
-- Ingreso mensual mínimo: $25,000 MXN
-- Buen historial crediticio
-- Estabilidad laboral (mínimo 1 año)
-- Identificación oficial y comprobantes vigentes
+1. Descarga todos los archivos
+2. Organiza las imágenes según la estructura mencionada
+3. Abre `index.html` en tu navegador
+4. ¡Disfruta tu sitio web premium!
 
-## 💳 Beneficios por Tarjeta
+## Personalización
 
-### Vita
-- 2% cashback
-- Sin anualidad el primer año
-- Salas VIP nacionales
-- Seguro de compra
+Si quieres cambiar colores u otros estilos, edita las variables CSS en `styles.css`:
 
-### Fides
-- 4% cashback en viajes y restaurantes
-- Salas VIP internacionales ilimitado
-- Concierge 24/7
-- Seguro de viaje internacional
-
-### Legatum
-- 6% cashback en categorías premium
-- Priority Pass ilimitado
-- Concierge personal exclusivo
-- Eventos privados y experiencias únicas
-
-## 🚀 Cómo Usar
-
-1. **Abrir el proyecto**:
-   - Simplemente abre `index.html` en tu navegador
-   - No requiere servidor local (100% estático)
-
-2. **Personalización**:
-   - Colores: Modificar variables CSS en `:root`
-   - Contenido: Editar directamente en `index.html`
-   - Funcionalidad: Ajustar módulos en `main.js`
-
-3. **Despliegue**:
-   - Puede ser desplegado en cualquier hosting estático
-   - Compatible con GitHub Pages, Netlify, Vercel, etc.
-
-## 🎨 Guía de Personalización
-
-### Cambiar Colores
 ```css
 :root {
-  --color-gold: #TU_COLOR;
-  --color-dark: #TU_COLOR;
+  --color-gold: #D4AF37;
+  --color-dark: #1A1A2E;
   /* ... más variables */
 }
 ```
 
-### Modificar Animaciones
-```css
-/* En styles.css, buscar secciones de @keyframes */
-@keyframes tuAnimacion {
-  /* ... */
-}
-```
+## Soporte
 
-### Añadir Nueva Sección
-```html
-<section class="nueva-seccion">
-  <div class="container">
-    <!-- Tu contenido -->
-  </div>
-</section>
-```
-
-## 📊 Características Técnicas
-
-- ✅ HTML5 semántico
-- ✅ CSS3 moderno con variables
-- ✅ JavaScript ES6+
-- ✅ Diseño responsive
-- ✅ Animaciones CSS y JavaScript
-- ✅ Accesibilidad (ARIA labels)
-- ✅ SEO optimizado
-- ✅ Performance optimizado
-- ✅ Cross-browser compatible
-
-## 🔍 SEO y Accesibilidad
-
-- Meta tags apropiados
-- Estructura semántica HTML5
-- ARIA labels para navegación
-- Alt text en elementos visuales
-- Jerarquía de headings correcta
-- Contraste de colores accesible
-
-## 📈 Optimizaciones
-
-- Lazy loading de imágenes (implementable)
-- Minificación de CSS/JS (para producción)
-- Compresión de assets
-- Carga asíncrona de fuentes
-- Debounce en eventos de scroll
-
-## 🛠️ Tecnologías Utilizadas
-
-- HTML5
-- CSS3 (Grid, Flexbox, Animations)
-- JavaScript (ES6+)
-- Google Fonts (Libre Baskerville, Lato)
-
-## 📄 Licencia
-
-Este proyecto es propiedad de Aurum Bank.
-
-## 👥 Público Objetivo
-
-Personas de 35 a 40 años que:
-- Buscan productos financieros premium
-- Valoran el diseño y la elegancia
-- Tienen estabilidad financiera
-- Buscan beneficios exclusivos
-
-## 🎯 Objetivos del Sitio
-
-1. Presentar las tres líneas de tarjetas
-2. Comunicar beneficios claramente
-3. Facilitar el proceso de solicitud
-4. Generar confianza y credibilidad
-5. Capturar leads calificados
-
-## 📞 Contacto
-
-- Teléfono: 01 800 AURUM-00
-- Email: contacto@aurumbank.com
-- Chat: Disponible 24/7
+Si tienes alguna pregunta o necesitas más ajustes, no dudes en preguntar.
 
 ---
 
-**Desarrollado con atención al detalle y enfoque en la experiencia del usuario.**
+© 2026 Aurum Bank - Todos los derechos reservados
