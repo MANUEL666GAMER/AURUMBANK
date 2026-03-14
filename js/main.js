@@ -1,4 +1,52 @@
 // ==========================================
+// CARD EXPANSION - FUNCIONA UNA A LA VEZ
+// ==========================================
+
+function toggleCard(button) {
+    console.log('Click detectado en botón');
+    
+    // Obtener la tarjeta actual
+    const currentCard = button.closest('.card-item');
+    const currentDetails = currentCard.querySelector('.card-details');
+    
+    if (!currentDetails) {
+        console.error('No se encontró card-details');
+        return;
+    }
+    
+    // Verificar si ya está abierta
+    const isAlreadyOpen = currentDetails.classList.contains('active');
+    
+    if (isAlreadyOpen) {
+        // Si está abierta, cerrarla
+        currentDetails.classList.remove('active');
+        button.classList.remove('active');
+        button.innerHTML = '<i class="fas fa-chevron-down"></i> Ver más detalles';
+        console.log('Tarjeta cerrada');
+    } else {
+        // Si está cerrada, cerrar TODAS primero luego abrir esta
+        document.querySelectorAll('.card-item').forEach(card => {
+            const details = card.querySelector('.card-details');
+            const btn = card.querySelector('.btn-expand');
+            
+            if (details) {
+                details.classList.remove('active');
+            }
+            if (btn) {
+                btn.classList.remove('active');
+                btn.innerHTML = '<i class="fas fa-chevron-down"></i> Ver más detalles';
+            }
+        });
+        
+        // Ahora abrir esta tarjeta
+        currentDetails.classList.add('active');
+        button.classList.add('active');
+        button.innerHTML = '<i class="fas fa-chevron-down"></i> Ver menos detalles';
+        console.log('Tarjeta abierta');
+    }
+}
+
+// ==========================================
 // NAVIGATION
 // ==========================================
 
@@ -64,32 +112,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ==========================================
 
 function applyCard(cardType) {
+    console.log(`Applying for ${cardType} card`);
+    
     // Scroll to contact form
     const contactSection = document.getElementById('contacto');
-    const navbarHeight = navbar.offsetHeight;
-    const targetPosition = contactSection.offsetTop - navbarHeight;
-    
-    window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-    });
-    
-    // Pre-select the card in the form
-    setTimeout(() => {
-        const select = document.querySelector('.contact-form select');
-        if (select) {
-            select.value = cardType;
-            select.style.borderColor = '#D4AF37';
-            select.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.1)';
-            
-            setTimeout(() => {
-                select.style.borderColor = '';
-                select.style.boxShadow = '';
-            }, 2000);
-        }
-    }, 1000);
-    
-    console.log(`Applying for ${cardType} card`);
+    if (contactSection) {
+        const navbarHeight = navbar.offsetHeight || 70;
+        const targetPosition = contactSection.offsetTop - navbarHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Pre-select the card in the form
+        setTimeout(() => {
+            const select = document.querySelector('.contact-form select');
+            if (select) {
+                select.value = cardType;
+                select.style.borderColor = '#D4AF37';
+                select.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.3)';
+                select.focus();
+                
+                setTimeout(() => {
+                    select.style.borderColor = '';
+                    select.style.boxShadow = '';
+                }, 2000);
+            }
+        }, 800);
+    }
 }
 
 // ==========================================
